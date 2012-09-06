@@ -184,6 +184,11 @@ module MetaTags
         result << tag(:meta, :property => "og:#{property}", :content => content)
       end
 
+      # Twitter Cards
+      (meta_tags[:twitter] || {}).each do |property, content|
+        result << tag(:meta, :property => "twitter:#{property}", :content => content)
+      end
+
       # canonical
       result << tag(:link, :rel => :canonical, :href => meta_tags[:canonical]) unless meta_tags[:canonical].blank?
 

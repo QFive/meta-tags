@@ -346,6 +346,40 @@ describe MetaTags::ViewHelper do
     end
   end
 
+  context 'displaying Twitter Cards meta tags' do
+    it 'should display meta tags specified with :twitter' do
+      subject.set_meta_tags(:twitter => {
+        :card => 'summary',
+        :title => 'Twitter Card Title'
+      })
+
+      subject.display_meta_tags(:site => 'someSite').tap do |content|
+        content.should include('<meta content="summary" property="twitter:card" />')
+        content.should include('<meta content="Twitter Card Title" property="twitter:title" />')
+      end
+    end
+
+    it 'should use deep merge when displaying twitter card tags' do
+      subject.set_meta_tags(:twitter => { :title => 'Twitter Card Title' })
+      subject.display_meta_tags(:twitter => { :description => 'Twitter Card Description' }).tap do |content|
+        content.should include('<meta content="Twitter Card Title" property="twitter:title" />')
+        content.should include('<meta content="Twitter Card Description" property="twitter:description" />')
+      end
+    end
+
+    it "should display meta tags for nested property names" do
+      subject.set_meta_tags(:twitter => {
+        'player:width' => 400,
+        'player:height' => 300
+      })
+
+      subject.display_meta_tags(:site => 'someSite').tap do |content|
+        content.should include('<meta content="400" property="twitter:player:width" />')
+        content.should include('<meta content="300" property="twitter:player:height" />')
+      end
+    end
+  end
+
   context '.display_title' do
     it 'should display custom title if given' do
       subject.title('someTitle')
