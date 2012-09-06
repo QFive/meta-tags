@@ -127,6 +127,34 @@ Further reading:
 
 * [Open Graph protocol](http://developers.facebook.com/docs/opengraph/)
 
+### Twitter Cards
+
+To prepare your pages for use with Twitter's 'Twitter Cards' system, you'll need to add some other Open Graph protocol `<meta>` tags to your webpages.
+These tags allow you to generate a rich content preview experience on Twitter for your content.
+
+Following along the same lines as the Open Graph usage you can do the following:
+
+    set_meta_tags :twitter => {
+      :card => 'summary',
+      :site => '@nytimes',
+      :creator => '@SarahMaslinNir',
+      :url => 'http://www.nytimes.com/2012/02/19/arts/music/amid-police-presence-fans-congregate-for-whitney-houstons-funeral-in-newark.html',
+      :title => 'Parade of Fans for Houston’s Funeral',
+      :description => 'NEWARK - The guest list and parade of limousines with celebrities emerging from them seemed more suited to a red carpet event in Hollywood or New York than than a gritty stretch of Sussex Avenue near the former site of the James M. Baxter Terrace public housing project here.'
+      :image => 'http://graphics8.nytimes.com/images/2012/02/19/us/19whitney-span/19whitney-span-articleLarge.jp'
+    }
+    # <meta property="twitter:card" content="summary" />
+    # <meta property="twitter:site" content="@nytimes" />
+    # <meta property="twitter:creator" content="@SarahMaslinNir" />
+    # <meta property="twitter:url" content="http://www.nytimes.com/2012/02/19/arts/music/amid-police-presence-fans-congregate-for-whitney-houstons-funeral-in-newark.html" />
+    # <meta property="twitter:title" content="Parade of Fans for Houston’s Funeral" />
+    # <meta property="twitter:description" content="NEWARK - The guest list and parade of limousines with celebrities emerging from them seemed more suited to a red carpet event in Hollywood or New York than than a gritty stretch of Sussex Avenue near the former site of the James M. Baxter Terrace public housing project here" />
+    # <meta property="twitter:image" content="http://graphics8.nytimes.com/images/2012/02/19/us/19whitney-span/19whitney-span-articleLarge.jpg" />
+
+Sample twitter card taken directly from Twitter Card docs for Summary Card.
+
+* [Twitter Cards](https://dev.twitter.com/docs/cards)
+
 ## MetaTags Usage
 
 First, add this code to your main layout:
