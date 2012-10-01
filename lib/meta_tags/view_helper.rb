@@ -186,7 +186,7 @@ module MetaTags
 
       # Twitter Cards
       (meta_tags[:twitter] || {}).each do |property, content|
-        result << tag(:meta, :property => "twitter:#{property}", :content => content)
+        result << tag(:meta, :name => "twitter:#{property}", :content => content)
       end
 
       # canonical
