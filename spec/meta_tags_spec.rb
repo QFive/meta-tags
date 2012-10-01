@@ -354,16 +354,16 @@ describe MetaTags::ViewHelper do
       })
 
       subject.display_meta_tags(:site => 'someSite').tap do |content|
-        content.should include('<meta content="summary" property="twitter:card" />')
-        content.should include('<meta content="Twitter Card Title" property="twitter:title" />')
+        content.should include('<meta content="summary" name="twitter:card" />')
+        content.should include('<meta content="Twitter Card Title" name="twitter:title" />')
       end
     end
 
     it 'should use deep merge when displaying twitter card tags' do
       subject.set_meta_tags(:twitter => { :title => 'Twitter Card Title' })
       subject.display_meta_tags(:twitter => { :description => 'Twitter Card Description' }).tap do |content|
-        content.should include('<meta content="Twitter Card Title" property="twitter:title" />')
-        content.should include('<meta content="Twitter Card Description" property="twitter:description" />')
+        content.should include('<meta content="Twitter Card Title" name="twitter:title" />')
+        content.should include('<meta content="Twitter Card Description" name="twitter:description" />')
       end
     end
 
@@ -374,8 +374,8 @@ describe MetaTags::ViewHelper do
       })
 
       subject.display_meta_tags(:site => 'someSite').tap do |content|
-        content.should include('<meta content="400" property="twitter:player:width" />')
-        content.should include('<meta content="300" property="twitter:player:height" />')
+        content.should include('<meta content="400" name="twitter:player:width" />')
+        content.should include('<meta content="300" name="twitter:player:height" />')
       end
     end
   end
